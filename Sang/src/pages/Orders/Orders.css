@@ -1,0 +1,499 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.account-container {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e5e5;
+  padding: 40px 20px;
+}
+
+.account-title {
+  color: #e94e1b;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-menu2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  padding: 9px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.nav-item2:hover {
+  background-color: #f8f8f8;
+}
+
+.nav-item2.active {
+  background-color: #f0f0f0;
+  font-weight: 500;
+}
+
+/* Content Styles */
+.content {
+  flex: 1;
+  padding: 40px 50px;
+}
+
+.orders-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+
+.header-col {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.order-col {
+  width: 120px;
+}
+
+.date-col {
+  width: 200px;
+}
+
+.status-col {
+  width: 150px;
+}
+
+.total-col {
+  width: 250px;
+}
+
+.actions-col {
+  flex: 1;
+}
+
+/* Order Row Styles */
+.order-row {
+  display: flex;
+  align-items: center;
+  padding: 9px 27px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.2s;
+}
+
+.order-row:hover {
+  background-color: #fafafa;
+}
+
+.order-cell {
+  font-size: 14px;
+  color: #666;
+}
+
+.order-id {
+  color: #e94e1b;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.order-date {
+  color: #666;
+}
+
+.order-status {
+  color: #666;
+}
+
+.order-total {
+  color: #e94e1b;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.order-items {
+  color: #999;
+  font-size: 14px;
+}
+
+.actions-col {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* Button Styles */
+.btn-view,
+.btn-track,
+.btn-invoice {
+  padding: 7px 22px;
+  border: none;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.btn-view {
+  background-color: #e94e1b;
+  color: #ffffff;
+}
+
+.btn-view:hover {
+  background-color: #d4431a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(233, 78, 27, 0.3);
+}
+
+.btn-track {
+  background-color: #e94e1b;
+  color: #ffffff;
+}
+
+.btn-track:hover {
+  background-color: #d4431a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(233, 78, 27, 0.3);
+}
+
+.btn-invoice {
+  background-color: #e94e1b;
+  color: #ffffff;
+}
+
+.btn-invoice:hover {
+  background-color: #d4431a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(233, 78, 27, 0.3);
+}
+
+/* Chat Widget */
+.chat-widget {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #e94e1b;
+  color: #ffffff;
+  padding: 15px 10px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-icon {
+  writing-mode: horizontal-tb;
+  font-size: 20px;
+}
+
+.chat-text {
+  letter-spacing: 1px;
+}
+
+.chat-widget:hover {
+  background-color: #d4431a;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .account-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 30px 15px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .order-row {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+
+  .actions-col {
+    width: 100%;
+    margin-top: 15px;
+    justify-content: flex-start;
+  }
+
+  .orders-header {
+    padding: 15px;
+  }
+
+  .header-col {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 20px 15px;
+  }
+
+  .account-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .nav-item2 {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .orders-header {
+    padding: 12px 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .header-col {
+    font-size: 11px;
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .order-col {
+    width: 100px;
+  }
+
+  .date-col {
+    width: 150px;
+  }
+
+  .status-col {
+    width: 120px;
+  }
+
+  .total-col {
+    width: 200px;
+  }
+
+  .order-row {
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .order-cell {
+    font-size: 13px;
+  }
+
+  .order-id, .order-total {
+    font-size: 14px;
+  }
+
+  .btn-view, .btn-track, .btn-invoice {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-width: 80px;
+  }
+
+  .chat-widget {
+    right: 10px;
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+
+  .chat-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 15px 10px;
+  }
+
+  .account-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .nav-item2 {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .content {
+    padding: 10px 10px 80px;
+  }
+
+  .orders-header {
+    padding: 10px 8px;
+    display: none; /* Hide header on very small screens */
+  }
+
+  .order-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+  }
+
+  .order-cell {
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .order-cell::before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    min-width: 120px;
+  }
+
+  .actions-col {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+
+  .btn-view, .btn-track, .btn-invoice {
+    padding: 10px 14px;
+    font-size: 13px;
+    min-width: 90px;
+    margin: 2px;
+  }
+
+  .chat-widget {
+    right: 5px;
+    padding: 10px 6px;
+    font-size: 11px;
+  }
+
+  .chat-icon {
+    font-size: 16px;
+  }
+
+  .next-btn2, .prev-btn2 {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .page-info {
+    font-size: 14px;
+  }
+
+  /* Touch-friendly buttons */
+  .nav-item2, .btn-view, .btn-track, .btn-invoice, .next-btn2, .prev-btn2 {
+    min-height: 44px;
+  }
+}
+
+.next-btn2 {
+  display: block;
+  margin: 20px auto;
+  background-color: #f15a24;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.next-btn2:hover {
+  background-color: #d94d1f;
+}
+
+.loading-text,
+.no-more-text {
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ✅ Previous Button */
+.prev-btn2 {
+  background-color: #f15a24;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.prev-btn2:hover {
+  background-color: #d94d1f;
+}
+
+.prev-btn2:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ✅ Page Number Display */
+.page-info {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+}
+

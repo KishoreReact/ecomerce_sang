@@ -1,0 +1,493 @@
+.side-filter {
+  width: 280px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: #fff;
+  padding: 0;
+}
+
+/* Filter Section */
+.filter-section {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 24px 20px;
+  overflow-y: auto;
+  height: 20%;
+}
+
+.filter-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+/* Stock Status Options */
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.filter-option input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #4a4a4a;
+}
+
+.filter-option span {
+  cursor: pointer;
+}
+
+/* Categories List */
+.categories-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-item {
+  margin-bottom: 8px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  flex: 1;
+}
+
+.category-label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #4a4a4a;
+}
+
+.category-label span {
+  cursor: pointer;
+}
+
+.category-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-count {
+  font-size: 13px;
+  color: #999;
+  min-width: 30px;
+  text-align: right;
+}
+
+.toggle-btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+  color: #666;
+}
+
+.toggle-btn.expanded {
+  color: #666;
+}
+
+/* Subcategories */
+.subcategories {
+  padding-left: 26px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subcategory-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #666;
+  padding: 2px 0;
+}
+
+.subcategory-item input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #4a4a4a;
+}
+
+.subcategory-item span {
+  cursor: pointer;
+}
+
+.subcategory-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: #999;
+  padding-left: 8px;
+}
+
+/* Brands List */
+.brands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.brand-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #4a4a4a;
+}
+
+.brand-item span {
+  cursor: pointer;
+}
+
+/* Hover Effects */
+.filter-option:hover span,
+.category-label:hover span,
+.subcategory-item:hover span,
+.brand-item:hover span {
+  color: #333;
+}
+
+.mobile-filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+/* Responsive */
+@media (max-width: 1025px) {
+  .side-filter {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    z-index: 999;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .side-filter.mobile-open {
+    left: 0;
+  }
+
+  .mobile-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-filter-overlay {
+    display: block;
+  }
+}
+.price-range-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.price-slider {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  background: linear-gradient(to right, red var(--progress, 0%), #ccc var(--progress, 0%));
+  height: 6px;
+  border-radius: 5px;
+  outline: none;
+  position: relative;
+}
+
+.price-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f44336;
+  cursor: pointer;
+  margin-top: -6px;
+  position: relative;
+  z-index: 2;
+}
+
+
+.slider-values {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: red;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.dual-range-slider {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: #ddd;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.range-slider {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  border-radius: 5px;
+  outline: none;
+  appearance: none;
+  pointer-events: none;
+}
+
+.range-slider-container {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  background: #ddd;
+  border-radius: 3px;
+  margin: 20px 0;
+}
+
+/* ✅ Red fill track (active price range) */
+.range-track {
+  position: absolute;
+  top: 0;
+  height: 18px;
+  background: #e74c3c;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+/* ✅ Range inputs overlayed */
+.range-thumb {
+  position: absolute;
+  width: 100%;
+  height: 18px;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ✅ Thumb styling */
+.range-thumb::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e74c3c;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  position: relative;
+}
+
+.range-thumb::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e74c3c;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  position: relative;
+}
+
+
+.min-slider::-webkit-slider-thumb {
+  background: #e74c3c;
+}
+
+.max-slider::-webkit-slider-thumb {
+  background: #e74c3c;
+}
+
+.min-slider::-moz-range-thumb {
+  background: #e74c3c;
+}
+
+.max-slider::-moz-range-thumb {
+  background: #e74c3c;
+}
+
+/* Track styling */
+.dual-range-slider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #ddd 0%, #e74c3c 0%, #e74c3c 100%, #ddd 100%);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Dynamic range styling based on slider values */
+.dual-range-slider {
+  position: relative;
+}
+
+.dual-range-slider::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--min-percent, 0%) + 10px);
+  right: calc(100% - var(--max-percent, 100%) + 10px);
+  top: 0;
+  bottom: 0;
+  background: #e74c3c;
+  border-radius: 5px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Ensure the track starts from the beginning */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-track {
+  background: transparent;
+  height: 4px;
+}
+
+.range-slider::-moz-range-track {
+  background: transparent;
+  height: 4px;
+  border: none;
+}
+
+.price-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.price-inputs span {
+  font-weight: 600;
+  color: #444;
+}
+
+.price-inputs input {
+  width: 70px;
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-btn {
+  background: #f2f2f2;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: #e0e0e0;
+}
+.filter-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.stock-status {
+display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: 16px;
+}
+
+.stock-btn {
+  background-color: #f5edec;
+  color: #231d1d;
+  border: 1px solid #e74c3c;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.stock-btn:hover {
+  background-color: #e74c3c;
+  border-color: #ec5f4f;
+  color: #f7f4f4;
+}
+
+.stock-btn.active {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border-color: #e74c3c;
+  box-shadow: 0 0 6px rgba(231, 103, 44, 0.4);
+}

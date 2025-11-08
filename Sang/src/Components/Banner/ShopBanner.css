@@ -1,0 +1,90 @@
+:root{
+  --blue: #1976d2;      /* top heading blue */
+  --orange: #ff6b35;    /* badge orange */
+  --beige: #fbf6f1;     /* fallback banner bg */
+}
+
+.shop-hero {
+  padding: 16px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* small blue heading top-left */
+.shop-heading {
+  color: var(--blue);
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+}
+
+/* the big banner */
+.shop-banner {
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--beige);          /* fallback */
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: cover;
+  height: var(--banner-height, 94px);    /* configurable via inline style */
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft white -> transparent overlay to keep left content visible */
+.shop-banner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.7) 35%, rgba(255,255,255,0) 65%);
+  pointer-events: none;
+}
+
+/* container for left badge + text */
+.shop-banner-content{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1; /* sit above overlay */
+}
+
+/* white rounded small card with badge inside */
+.shop-badge{
+  padding: 10px 14px;
+  border-radius: 8px;
+  min-width: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* orange badge text */
+.shop-badge-text{
+  color: #d13e08;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+}
+
+/* the subheader shown next to the badge */
+.shop-subheader{
+  color: #222;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* responsive tweaks */
+@media (max-width: 720px){
+  .shop-heading { font-size: 18px; }
+  .shop-subheader { font-size: 15px; }
+  .shop-banner { height: calc(var(--banner-height, 94px) * 0.85); padding: 10px; }
+  .shop-badge { padding: 8px 12px; min-width: 72px; }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-import { Heart, ShoppingCart,Shuffle, Maximize } from 'lucide-react';
+import { Heart, ShoppingCart, Maximize } from 'lucide-react';
 import "./Shop.css";
 import Header from "../../Components/Header/Header";
 import { getProducts, addToWishlist, addToCart, getWishist, getCartist, getTagList } from "../../redux/services/productService";
@@ -16,15 +16,13 @@ const Shop = () => {
       const navigate = useNavigate();
       const location = useLocation();
     const [currentPage, setCurrentPage] = useState(1);
-    const { query = "", category = null } = location.state || {};
+    //const { query = "", category = null } = location.state || {};
     const [products, setProducts] = useState([]);
     const [wishlist, setWishlist] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(0);
     const [sortOption, setSortOption] = useState('popularity');
    const [searchQuery, setSearchQuery] = useState("");
-     const [selectedCategory, setSelectedCategory] = useState(null);
       const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
 
@@ -42,6 +40,8 @@ const Shop = () => {
   const [totalRows, setTotalRows] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  //const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
 useEffect(() => {
   const navEntries = window.performance.getEntriesByType('navigation');
@@ -99,7 +99,7 @@ useEffect(() => {
   setPriceRange([0, 741362]);
   setSortOption('popularity');
   setCurrentPage(1);
-}, []); // Runs only on mount
+}, [location.state]); // Runs only on mount
 
 
   useEffect(() => {
@@ -151,7 +151,6 @@ console.log("searchQuery123",searchQuery)
         inStock: inStockOnly,
         });
         const parsedResult = JSON.parse(res.result);
-        console.log("parsedResult123",parsedResult)
         setProducts(parsedResult.Data || []);
         setTotalRows(parsedResult.PageSummary?.[0]?.TotalRows || 0);
         setTotalPages(parsedResult.PageSummary?.[0]?.TotalPages || 0);
@@ -161,7 +160,7 @@ console.log("searchQuery123",searchQuery)
     };
 
     fetchProducts();
-  }, [currentPage, searchQuery, selectedCategory, selectedSubCategories, selectedBrands, priceRange, sortOption, inStockOnly]);
+  }, [currentPage, searchQuery, selectedCategory, selectedSubCategories, selectedBrands, priceRange, sortOption, inStockOnly, location.state]);
 
   // fetch wishlist
   useEffect(() => {
@@ -172,9 +171,10 @@ console.log("searchQuery123",searchQuery)
         setWishlist(parsedResult.Data || []);
       } catch (error) {
         console.error("Error fetching wishlist:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
+      // finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchWishlist();
@@ -196,7 +196,6 @@ console.log("searchQuery123",searchQuery)
             quantity: item.Quantity || 1,
             image: "/api/placeholder/60/60",
           }));
-          const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
           setCartItems(mappedItems);
           setCartCount(mappedItems.length);
         }
@@ -257,8 +256,6 @@ console.log("searchQuery123",searchQuery)
       await addToCart(payload);
       const newCart = [...cartItems, { productId: product.Id }];
       setCartItems(newCart);
-      const totalQuantity = newCart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-      //setCartCount(newCart.length);
   
       setCartTrigger(prev => prev + 1); // Trigger cart count refresh
     } catch (err) {
@@ -519,7 +516,6 @@ console.log("searchQuery123",searchQuery)
                     quantity: item.Quantity || 1,
                     image: "/api/placeholder/60/60",
                   }));
-                  const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
                   setCartItems(mappedItems);
                   setCartCount(mappedItems.length);
                 }

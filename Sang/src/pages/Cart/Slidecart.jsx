@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Minus, Plus, MessageCircle } from 'lucide-react';
+import { X, Minus, Plus } from 'lucide-react';
 import { getCartist, updateCart, deleteTransaction } from '../../redux/services/productService';
 
 const SlideCart = ({ cartItems: propCartItems = [], onClose, onViewCart, onCheckout, onCartUpdate }) => {
@@ -162,7 +162,7 @@ useEffect(() => {
           items.map((item) => (
             <div key={item.id} className="cart-item">
               <div className="item-image">
-                 <img  className="cart-image" src={item.image} />
+                 <img  className="cart-image" src={item.image} alt={item.name} />
               </div>
 
               <div className="item-details">

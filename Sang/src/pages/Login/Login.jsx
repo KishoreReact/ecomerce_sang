@@ -1,7 +1,6 @@
 import './Login.css'
 import { Col, Container, Row } from "react-bootstrap";
 import LoginForm from "./LoginForm/LoginForm";
-import RegisterForm from "./LoginForm/RegisterForm";
 
 function Login(){
   return (

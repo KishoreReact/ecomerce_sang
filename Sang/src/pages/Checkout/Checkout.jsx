@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import CONFIG from "../../config";
 import { getCustomerAddress, getCustomerOverdue } from "../../redux/services/productService";
-import { showError } from "../../utils/alert";
 
 const Checkout = ({ details = [], onPlaceOrder, goToCart }) => {
   // ✅ Items from transaction details
@@ -38,7 +37,7 @@ const Checkout = ({ details = [], onPlaceOrder, goToCart }) => {
   // Fetch customer address on mount
   useEffect(() => {
     const customerId = details[0]?.Header[0].Customer
-    
+
     const fetchCustomerAddress = async () => {
       try {
         const res = await getCustomerAddress(customerId);
@@ -65,7 +64,7 @@ const Checkout = ({ details = [], onPlaceOrder, goToCart }) => {
     };
 
     fetchCustomerAddress();
-  }, []);
+  }, [details]);
   // ✅ Update billing info on input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -267,7 +266,7 @@ const Checkout = ({ details = [], onPlaceOrder, goToCart }) => {
           <div className="privacy-notice">
             Your personal data will be used to process your order, support your
             experience throughout this website, and for other purposes described
-            in our <a href="#" className="privacy-link">privacy policy</a>.
+            in our <button className="privacy-link" onClick={() => {}}>privacy policy</button>.
           </div>
 
           <button

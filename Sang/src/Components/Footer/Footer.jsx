@@ -38,12 +38,12 @@ const Footer = () => {
           </div>
 
           <div className="social-icons">
-            <a href="#" className="social-icon facebook">f</a>
-            <a href="#" className="social-icon twitter">🐦</a>
-            <a href="#" className="social-icon email">✉</a>
-            <a href="#" className="social-icon pinterest">P</a>
-            <a href="#" className="social-icon linkedin">in</a>
-            <a href="#" className="social-icon telegram">✈</a>
+            <a href="facebook" className="social-icon facebook">f</a>
+            <a href="twitter" className="social-icon twitter">🐦</a>
+            <a href="email" className="social-icon email">✉</a>
+            <a href="pinterest" className="social-icon pinterest">P</a>
+            <a href="linkedin" className="social-icon linkedin">in</a>
+            <a href="telegram" className="social-icon telegram">✈</a>
           </div>
         </div>
 
@@ -51,12 +51,12 @@ const Footer = () => {
         <div className="footer-middle">
           <h3>MOST POPULAR CATEGORIES</h3>
           <ul>
-            <li><a href="#">Brand by Dogs</a></li>
-            <li><a href="#">Brand by Cats</a></li>
-            <li><a href="#" className="highlight">Brand by Cattle</a></li>
-            <li><a href="#">Brand by Goat</a></li>
-            <li><a href="#">Brand by Camel</a></li>
-            <li><a href="#">Brand by Horse</a></li>
+            <li><a href="Dogs">Brand by Dogs</a></li>
+            <li><a href="Cats">Brand by Cats</a></li>
+            <li><a href="Cattle" className="highlight">Brand by Cattle</a></li>
+            <li><a href="Goat">Brand by Goat</a></li>
+            <li><a href="Camel">Brand by Camel</a></li>
+            <li><a href="Horse">Brand by Horse</a></li>
           </ul>
         </div>
 
@@ -64,9 +64,9 @@ const Footer = () => {
         <div className="footer-services">
           <h3>CUSTOMER SERVICES</h3>
           <ul>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="Conditions">Terms & Conditions</a></li>
+            <li><a href="FAQ">FAQ</a></li>
+            <li><a href="Policy">Privacy Policy</a></li>
           </ul>
         </div>
 
@@ -74,14 +74,14 @@ const Footer = () => {
         <div className="footer-right">
           <h3>Download App</h3>
           <div className="app-buttons">
-            <a href="#" className="app-button">
+            <a href="appbutton" className="app-button">
               <div className="apple-icon">🍎</div>
               <div className="app-text">
                 <span className="small">Download on the</span>
                 <span className="large">App Store</span>
               </div>
             </a>
-            <a href="#" className="app-button">
+            <a href="appbutton" className="app-button">
               <div className="play-icon">▶</div>
               <div className="app-text">
                 <span className="small">GET IT ON</span>

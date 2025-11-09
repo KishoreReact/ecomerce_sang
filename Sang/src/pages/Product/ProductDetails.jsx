@@ -65,7 +65,6 @@ useEffect(() => {
             quantity: item.Quantity || 1,
             image: "/api/placeholder/60/60",
           }));
-          const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
           setCartItems(mappedItems);
           setCartCount(mappedItems.length);
         }

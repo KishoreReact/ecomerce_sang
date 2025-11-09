@@ -72,7 +72,6 @@ const Orders = () => {
               quantity: item.Quantity || 1,
               image: "/api/placeholder/60/60",
             }));
-            const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
             setCartItems(mappedItems);
             setCartCount(mappedItems.length);
           }
@@ -115,12 +114,6 @@ const Orders = () => {
       day: "numeric",
     });
 
-    const formattedTime = date.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-    });
-
     return `${formattedDate}`;
   };
 
@@ -151,16 +144,16 @@ const Orders = () => {
         <div className="sidebar">
           <h1 className="account-title">MY ACCOUNT</h1>
           <nav className="nav-menu2">
-            <a href="#" className="nav-item">Dashboard</a>
-            <a href="#" className="nav-item active">Orders</a>
-            <a href="#" className="nav-item">Downloads</a>
-            <a href="#" className="nav-item">Addresses</a>
-            <a href="#" className="nav-item">Account details</a>
-            <a href="#" className="nav-item">Buy again</a>
-            <a href="#" className="nav-item"onClick={() => navigate('/wishlist')}>Wishlist</a>
-             <a href="#" className="nav-item logout-item" onClick={handleLogout}>
+            <button className="nav-item">Dashboard</button>
+            <button className="nav-item active">Orders</button>
+            <button className="nav-item">Downloads</button>
+            <button className="nav-item">Addresses</button>
+            <button className="nav-item">Account details</button>
+            <button className="nav-item">Buy again</button>
+            <button className="nav-item"onClick={() => navigate('/wishlist')}>Wishlist</button>
+             <button className="nav-item logout-item" onClick={handleLogout}>
               Logout
-            </a>
+            </button>
           </nav>
         </div>
 

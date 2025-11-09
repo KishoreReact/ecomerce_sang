@@ -74,23 +74,23 @@ console.log("userData22",userData);
         </button>
 
         <nav className={`nav-menu ${isMenuOpen ? 'mobile-open' : ''}`}>
-          <a href="#" className="nav-item" onClick={(e) => { e.preventDefault(); navigate('/home'); setIsMenuOpen(false); }}>
+          <button className="nav-item" onClick={(e) => { navigate('/home'); setIsMenuOpen(false); }}>
             🏠 HOME
-          </a>
-          <a href="#" className="nav-item" onClick={(e) => { e.preventDefault(); navigate('/shop'); setIsMenuOpen(false); }}>
+          </button>
+          <button className="nav-item" onClick={(e) => { navigate('/shop'); setIsMenuOpen(false); }}>
             🛒 SHOP
-          </a>
-          <a href="#" className="nav-item" onClick={(e) => { e.preventDefault(); navigate('/wishlist'); setIsMenuOpen(false); }}>
+          </button>
+          <button className="nav-item" onClick={(e) => { navigate('/wishlist'); setIsMenuOpen(false); }}>
             ✨ WISHLIST
-          </a>
-          <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>
+          </button>
+          <button className="nav-item" onClick={() => setIsMenuOpen(false)}>
             <span className="nav-icon">🎫</span> RAISE A TICKET
-          </a>
-          <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>
+          </button>
+          <button className="nav-item" onClick={() => setIsMenuOpen(false)}>
             <span className="nav-icon">✨</span> CLEARANCES
-          </a>
-          <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>CONTACT US</a>
-          <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>CERTIFICATE VAULT MANAGER</a>
+          </button>
+          <button className="nav-item" onClick={() => setIsMenuOpen(false)}>CONTACT US</button>
+          <button className="nav-item" onClick={() => setIsMenuOpen(false)}>CERTIFICATE VAULT MANAGER</button>
         </nav>
 
         <div className="header-contact">

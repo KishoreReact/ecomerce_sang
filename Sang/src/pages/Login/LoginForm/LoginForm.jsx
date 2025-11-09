@@ -5,13 +5,6 @@ import { getCountryList } from '../../../redux/services/productService';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginForm.css';
 
-const countries = [
-  { code: 'ae', name: 'UAE', flag: 'https://flagcdn.com/w20/ae.png' },
-  { code: 'sa', name: 'Saudi Arabia', flag: 'https://flagcdn.com/w20/sa.png' },
-  { code: 'qa', name: 'Qatar', flag: 'https://flagcdn.com/w20/qa.png' },
-  { code: 'bh', name: 'Bahrain', flag: 'https://flagcdn.com/w20/bh.png' },
-  { code: 'eg', name: 'Egypt', flag: 'https://flagcdn.com/w20/eg.png' },
-];
 
 const LoginForm = () => {
   const dispatch = useDispatch();

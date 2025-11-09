@@ -16,12 +16,13 @@ const Cart = () => {
    const [originalCartItems, setOriginalCartItems] = useState([]);
    const [hasChanges, setHasChanges] = useState(false);
    const [couponCode, setCouponCode] = useState("");
-   const [cartCount, setCartCount] = useState("");
   const [step, setStep] = useState(location.state?.step || "cart"); // cart | checkout | orderComplete
    const [transactionDetails, setTransactionDetails] = useState([]); // store API responses
    const [orderResp, setOrderResp] = useState(null); // store API responses
    const [wishlist, setWishlist] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+   //const [cartCount, setCartCount] = useState(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+   
 
   // Handle cart items from navigation state (from slide cart checkout)
   const cartItemsFromState = location.state?.cartItems;
@@ -44,7 +45,11 @@ useEffect(() => {
     }
   }
 }, []);
-
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1025);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   // Fetch cart data
    useEffect(() => {
      const fetchCart = async () => {
@@ -69,9 +74,7 @@ useEffect(() => {
            const itemsToUse = cartItemsFromState || mappedItems;
            setCartItems(itemsToUse);
            setOriginalCartItems(itemsToUse);
-           // Calculate total quantity for cart count
-           const totalQuantity = itemsToUse.reduce((sum, item) => sum + (item.quantity || 1), 0);
-           setCartCount(itemsToUse.length);
+           //setCartCount(itemsToUse.length);
          }
        } catch (error) {
          console.error("Error fetching cart:", error);
@@ -141,8 +144,7 @@ const removeItem = async (id) => {
     // update UI after success
     setCartItems((prev) => {
       const updatedItems = prev.filter((item) => item.id !== id);
-      const totalQuantity = updatedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
-      setCartCount(updatedItems.length);
+      //setCartCount(updatedItems.length);
       return updatedItems;
     });
     setOriginalCartItems((prev) => {
@@ -212,7 +214,7 @@ const removeItem = async (id) => {
     setTransactionDetails([]);
     setCouponCode("");
     setHasChanges(false);
-    setCartCount(0);
+    //setCartCount(0);
     setStep("orderComplete");
   } catch (error) {
     console.error("Error placing order:", error);
@@ -319,10 +321,9 @@ const handleUpdateCart = async () => {
                     quantity: item.Quantity || 1,
                     image: "/api/placeholder/60/60",
                   }));
-                  const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
                   setCartItems(mappedItems);
                   setOriginalCartItems(mappedItems);
-                  setCartCount(mappedItems.length);
+                  //setCartCount(mappedItems.length);
                 }
               } catch (error) {
                 console.error("Error fetching cart:", error);

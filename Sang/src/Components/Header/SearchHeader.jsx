@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ChevronDown } from 'lucide-react';
 import { getWishist, getCartist } from '../../redux/services/productService';
 import './SearchHeader.css';
 
@@ -22,7 +21,6 @@ const SearchHeader = ({ categories = [], selectedCategory = null, onCategoryChan
       const res = await getCartist();
       const parsedData = JSON.parse(res.result);
       const cartItems = parsedData.Data || [];
-      const totalQuantity = cartItems.reduce((sum, item) => sum + (item.Quantity || 1), 0);
       setCartCount(cartItems.length);
       const totalAmount = cartItems.reduce((sum, item) => sum + (item.Rate || 0) * (item.Quantity || 1), 0) || 0;
       setCartAmount(totalAmount);
@@ -47,7 +45,7 @@ const SearchHeader = ({ categories = [], selectedCategory = null, onCategoryChan
 
   useEffect(() => {
     fetchCartData();
-  }, [cartTrigger]);
+  }, [cartTrigger, fetchCartData]);
 
   // Expose fetchCartData to parent components
   useEffect(() => {

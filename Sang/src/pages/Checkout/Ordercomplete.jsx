@@ -117,7 +117,7 @@ const OrderComplete = ({ orderId ,viewOrder}) => {
             <div className="product-info">
               <strong>Payment method:</strong>
             </div>
-            <div className="price">{header.PayTerms == "1" ? "Cash on delivery" : "Credit"}</div>
+            <div className="price">{header.PayTerms === "1" ? "Cash on delivery" : "Credit"}</div>
           </div>
 
           <div className="table-row4 total-row">

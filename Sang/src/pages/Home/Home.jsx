@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChevronLeft, ChevronRight, Heart, ShoppingCart,Shuffle, Maximize ,Eye, Phone, MapPin, Mail, User, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart, ShoppingCart,Shuffle, Maximize } from 'lucide-react';
 import './Home.css';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer'
@@ -36,7 +36,12 @@ const Home = () => {
  const [cartTrigger, setCartTrigger] = useState(0);
  const [wishlistTrigger, setWishlistTrigger] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+ 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1025);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 useEffect(() => {
   const storedData = localStorage.getItem('userData');
@@ -128,7 +133,6 @@ useEffect(() => {
             quantity: item.Quantity || 1,
             image: "/api/placeholder/60/60",
           }));
-          const totalQuantity = mappedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
           setCartCount(mappedItems.length);
           setCartItems(mappedItems);
         }
